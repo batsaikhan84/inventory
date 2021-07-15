@@ -78,7 +78,7 @@ export class StoreRoomService {
         storeRoomItem.Max_Quantity = createStoreRoomDto.Max_Quantity;
         storeRoomItem.Issued = null;
         storeRoomItem.Received = null;
-        storeRoomItem.Is_Active = createStoreRoomDto.Is_Active
+        storeRoomItem.Is_Active = true
         await storeRoomItem.save();
         return storeRoomItem;
     }

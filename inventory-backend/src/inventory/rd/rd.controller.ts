@@ -10,6 +10,10 @@ export class RdController {
     getAllRd(): Promise<Rd[]> {
         return this.rdService.rdItems();
     }
+    @Get('/email')
+    sendEmailReport(): void {
+        this.rdService.scheduledRdItems()
+    }
     @Get('/master')
     getAllRdMaster(): Promise<Rd[]> {
         return this.rdService.rdMasterItems();

@@ -14,6 +14,10 @@ export class QualityController {
     getAllQualityMater(): Promise<Quality[]> {
         return this.qualityService.qualityMasterItems();
     }
+    @Get('/email')
+    sendEmailReport(): void {
+        this.qualityService.scheduledQualityItems()
+    }
     @Get('/master/:id')
     getSingleExtractionMaster(@Param('id', ParseIntPipe) id: number): Promise<Quality> {
         return this.qualityService.qualityMaterItem(id);

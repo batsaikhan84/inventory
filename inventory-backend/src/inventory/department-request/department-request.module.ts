@@ -4,25 +4,23 @@ import { ExtractionRepository } from './../extraction/extraction.repository';
 import { MassSpecRepository } from './../mass-spec/mass-spec.repository';
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { MasterController } from "./master.controller";
-import { MasterRepository } from "./master.repository";
-import { MasterService } from "./master.service";
 import { ReceivingRepository } from '../receiving/receiving.repository';
 import { ChemicalRepository } from '../chemical/chemical.repository';
-import { ShippingRepository } from '../shipping/shipping.repository';
+import { DepartmentRequestRepository } from './department-request.repository';
+import { DepartmentRequestService } from './department-request.service';
+import { DepartmentRequestController } from './department-request.controller';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([MasterRepository,
+    TypeOrmModule.forFeature([DepartmentRequestRepository,
       MassSpecRepository,
       ExtractionRepository,
       RdRepository,
       ReceivingRepository,
       ScreeningRepository,
-      ShippingRepository,
       ChemicalRepository])
   ],
-  providers: [MasterService],
-  controllers: [MasterController]
+  providers: [DepartmentRequestService],
+  controllers: [DepartmentRequestController]
 })
-export class MasterModule { }
+export class DepartmentRequestModule { }

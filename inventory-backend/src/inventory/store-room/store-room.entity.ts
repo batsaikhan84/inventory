@@ -1,5 +1,6 @@
 import { Master } from './../master/master.entity';
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Unique } from 'typeorm'
+import { DepartmentRequest } from '../department-request/department-request.entity';
 
 @Entity({ name: 'store_room' })
 export class StoreRoom extends BaseEntity {
@@ -25,9 +26,12 @@ export class StoreRoom extends BaseEntity {
     Is_Need_To_Order: boolean
     @Column({name: 'order_quantity', type: 'int', nullable: true})
     Order_Quantity: number
-    @Column({name: 'is_active', type: 'boolean', nullable: true})
+    @Column({name: 'is_active', type: 'boolean', nullable: false })
     Is_Active: boolean
     @ManyToOne(type => Master, master => master.extraction, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
     @JoinColumn({ name: 'item_id' })
     master: Master
+    // @ManyToOne(type => DepartmentRequest, departmentRequest => departmentRequest.storeRoom, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+    // @JoinColumn({ name: 'item_id' })
+    // departmentRequest: DepartmentRequest
 }

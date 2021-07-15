@@ -32,8 +32,8 @@ export class MassSpecController {
         return this.massSpecService.createMassSpecItem(createMassSpecDto)
     }
     @Delete('/:id')
-    deleteMassSpec(@Param('id', ParseIntPipe) id: number): void {
-        this.massSpecService.deleteMassSpecItem(id);
+    deleteExtraction(@Param('id', ParseIntPipe) id: number): Promise<void> {
+        return this.massSpecService.deleteItem(id);
     }
     @Patch('/:id')
     updateMassSpec(@Param('id', ParseIntPipe) id: number, @Body() createMassSpecDto: CreateMassSpecDto): Promise<MassSpec> {

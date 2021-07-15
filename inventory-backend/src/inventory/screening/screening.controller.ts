@@ -33,7 +33,7 @@ export class ScreeningController {
     }
     @Delete('/:id')
     deleteScreening(@Param('id', ParseIntPipe) id: number): void {
-        this.screeningService.deletescreeningItem(id);
+        this.screeningService.deleteItem(id);
     }
     @Patch('/:id')
     updateScreening(@Param('id', ParseIntPipe) id: number, @Body() createScreeningDto: CreateScreeningDto): Promise<Screening> {

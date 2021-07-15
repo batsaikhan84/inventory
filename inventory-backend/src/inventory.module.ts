@@ -18,41 +18,12 @@ import { EmailModule } from './inventory/email/email.module';
 import { SchedulerModule } from './inventory/scheduler/scheduler.module';
 import { ResetModule } from './inventory/auth/reset/reset.module';
 import { AuditModule } from './inventory/audit/audit.module';
-import { ConfigModule, ConfigService } from '@nestjs/config'
-import { configValidationSchema } from './config.schema';
+import { DepartmentRequestModule } from './inventory/department-request/department-request.module';
+import { ShippingModule } from './inventory/shipping/shipping.module';
 
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      envFilePath: [`.env.stage.${process.env.STAGE}`],
-      // validationSchema: configValidationSchema
-    }),
-    // TypeOrmModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   inject: [ConfigService],
-    //   useFactory: async (configService: ConfigService) => ({
-    //       host: configService.get('DB_HOST'),
-    //       port: configService.get('DB_PORT'),
-    //       username: configService.get('DB_USERNAME'),
-    //       password: configService.get('DB_PASSWORD'),
-    //       database: configService.get('DB_DATABASE'),
-    //       type: 'mysql',
-    //       autoLoadEntities: true,
-    //       synchronize: false,
-    //   })
-    // }),
-    // TypeOrmModule.forRoot({
-    //   type: 'mysql',
-    //   host: 'localhost',
-    //   port: 3306,
-    //   username: 'root',
-    //   password: '@Root2021',
-    //   database: 'inventory',
-    //   autoLoadEntities: true,
-    //   synchronize: false
-    // }),
     TypeOrmModule.forRoot(typeOrmConfig),
     MasterModule,
     ExtractionModule,
@@ -70,7 +41,9 @@ import { configValidationSchema } from './config.schema';
     EmailModule,
     SchedulerModule,
     ResetModule,
-    AuditModule
+    AuditModule,
+    DepartmentRequestModule,
+    ShippingModule
 
   ]
 })

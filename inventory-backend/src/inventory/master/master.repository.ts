@@ -10,6 +10,8 @@ import { StoreRoom } from "../store-room/store-room.entity";
 import { CreateMasterDto } from "./create-master.dto";
 import { Master } from "./master.entity";
 import { CreateChemicalDto } from '../chemical/create-chemical-dto';
+import { DepartmentRequest } from '../department-request/department-request.entity';
+import { Shipping } from '../shipping/shipping.entity';
 
 @EntityRepository(Master)
 export class MasterRepository extends Repository<Master> {
@@ -35,7 +37,8 @@ export class MasterRepository extends Repository<Master> {
         masterItem.Comments = Comments;
         masterItem.Type = Type;
         masterItem.Class = Class;
-        masterItem.Is_Active = true
+        masterItem.Is_Active = true;
+        masterItem.Is_Special_Request = true;
         await masterItem.save();
         if (departments.extraction) {
             const extraction = new Extraction();
@@ -72,6 +75,16 @@ export class MasterRepository extends Repository<Master> {
             storeRoom.master = masterItem
             await storeRoom.save()
         }
+        if (departments.shipping) {
+            const shipping = new Shipping()
+            shipping.master = masterItem
+            await shipping.save()
+        }
+        // if (departments.departmentRequest) {
+        //     const departmentRequest = new DepartmentRequest()
+        //     departmentRequest.master = masterItem
+        //     await departmentRequest.save()
+        // }
         return masterItem;
     }
 }

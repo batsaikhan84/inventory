@@ -25,6 +25,8 @@ export class SpecialRequest extends BaseEntity {
     Is_Store_Room_Item: boolean;
     @Column({ name: 'user', type: 'varchar', nullable: true })
     User: string;
+    @Column({ name: 'comment', type: 'varchar', nullable: true })
+    Comment: string;
     @ManyToOne(type => Master, master => master.specialRequest, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
     @JoinColumn({ name: 'item_id' })
     master: Master

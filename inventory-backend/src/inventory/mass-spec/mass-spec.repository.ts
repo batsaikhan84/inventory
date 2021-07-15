@@ -14,7 +14,9 @@ export class MassSpecRepository extends Repository<MassSpec> {
                     Purchase_Unit: obj.master.Purchase_Unit, 
                     Recent_CN: obj.master.Recent_CN,
                     Comments: obj.master.Comments,
-                    Part_Number: obj.master.Part_Number    
+                    Part_Number: obj.master.Part_Number,
+                    Category: obj.master.Category,
+                    Class: obj.master.Class
                 }
                 result.push(resultObj[obj.Item_ID])
             }

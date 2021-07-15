@@ -9,6 +9,8 @@ import { Screening } from '../screening/screening.entity';
 import { Safety } from '../safety/safety.entity';
 import { SpecialRequest } from '../special-request/special-request.entity';
 import { Chemical } from '../chemical/chemical.entity';
+import { Shipping } from '../shipping/shipping.entity';
+import { DepartmentRequest } from '../department-request/department-request.entity';
 
 @Entity({ name: 'master' })
 export class Master extends BaseEntity {
@@ -46,6 +48,8 @@ export class Master extends BaseEntity {
     Class: string;
     @Column({name: 'is_active', type: 'boolean', nullable: true})
     Is_Active: boolean;
+    @Column({name: 'is_special_request', type: 'boolean', nullable: true})
+    Is_Special_Request: boolean;
     @OneToMany(type => Extraction, extraction => extraction.master, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
     extraction: Extraction[];
     @OneToMany(type => MassSpec, massSpec => massSpec.master, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
@@ -58,9 +62,13 @@ export class Master extends BaseEntity {
     rd: Rd[];
     @OneToMany(type => Screening, screening => screening.master, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
     screening: Screening[];
+    @OneToMany(type => Shipping, shipping => shipping.master, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+    shipping: Screening[];
     @OneToMany(type => StoreRoom, storeRoom => storeRoom.master, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
     storeRoom: StoreRoom[];
-    @OneToMany(type => StoreRoom, safety => safety.master, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+    @OneToMany(type => StoreRoom, storeRoom => storeRoom.master, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+    departmentRequest: DepartmentRequest[];
+    @OneToMany(type => DepartmentRequest, departmentRequest => departmentRequest.master, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
     safety: Safety[];
     @OneToMany(type => SpecialRequest, specialRequest => specialRequest.master, { nullable: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
     specialRequest: SpecialRequest[];

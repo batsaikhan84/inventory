@@ -32,8 +32,8 @@ export class ReceivingController {
         return this.receivingService.createReceivingItem(createReceivingDto)
     }
     @Delete('/:id')
-    deleteReceiving(@Param('id', ParseIntPipe) id: number): void {
-        this.receivingService.deleteReceivingItem(id);
+    deleteExtraction(@Param('id', ParseIntPipe) id: number): Promise<void> {
+        return this.receivingService.deleteItem(id);
     }
     @Patch('/:id')
     updateReceiving(@Param('id', ParseIntPipe) id: number, @Body() createReceivingDto: CreateReceivingDto): Promise<Receiving> {

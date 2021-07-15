@@ -32,8 +32,8 @@ export class ExtractionController {
         return this.extractionService.createExtractionItem(createExtractionDto)
     }
     @Delete('/:id')
-    deleteExtraction(@Param('id', ParseIntPipe) id: number): void {
-        this.extractionService.deleteExtractionItem(id);
+    deleteExtraction(@Param('id', ParseIntPipe) id: number): Promise<void> {
+        return this.extractionService.deleteItem(id);
     }
     @Patch('/:id')
     updateExtraction(@Param('id', ParseIntPipe) id: number, @Body() createExtractionDto: CreateExtractionDto): Promise<Extraction> {

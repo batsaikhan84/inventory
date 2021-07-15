@@ -1,11 +1,10 @@
-import { DepartmentRequest } from "../department-request/department-request.entity";
 import { Extraction } from "../extraction/extraction.entity";
 import { MassSpec } from "../mass-spec/mass-spec.entity";
 import { Rd } from "../rd/rd.entity";
 import { Receiving } from "../receiving/receving.entity";
 import { Screening } from "../screening/screening.entity";
 
-export class CreateMasterDto {
+export class CreateDepartmentRequestDto {
     ID: number;
     Item: string;
     Purchase_Unit: string;
@@ -23,11 +22,9 @@ export class CreateMasterDto {
     Type: string;
     Class: string;
     Is_Active: boolean;
-    Is_Special_Request: boolean;
     extraction: Extraction[];
     massSpec: MassSpec[];
     receiving: Receiving[];
     rd: Rd[];
     screening: Screening[];
-    departmentRequest: DepartmentRequest[];
 }

@@ -35,9 +35,8 @@ export class StoreRoomRepository extends Repository<StoreRoom> {
         return this.getStoreRoomMasterItems(storeRoom).filter(item => item.Item_ID === id)[0]
     }
     async createStoreRoomItem(createStoreRoomDto: CreateStoreRoomDto) {
-        const { ID, Item_ID, Location, Quantity, Min_Quantity, Max_Quantity, Usage_Level, Issued, Received } = createStoreRoomDto
+        const { Item_ID, Location, Quantity, Min_Quantity, Max_Quantity, Usage_Level, Issued, Received } = createStoreRoomDto
         const storeRoomItem = new StoreRoom();
-        storeRoomItem.ID = ID;
         storeRoomItem.Item_ID = Item_ID;
         storeRoomItem.Location = Location;
         storeRoomItem.Quantity = Quantity;
@@ -46,6 +45,7 @@ export class StoreRoomRepository extends Repository<StoreRoom> {
         storeRoomItem.Usage_Level = Usage_Level;
         storeRoomItem.Issued = Issued;
         storeRoomItem.Received = Received;
+        storeRoomItem.Is_Active = true;
         await storeRoomItem.save();
         return storeRoomItem;
     }

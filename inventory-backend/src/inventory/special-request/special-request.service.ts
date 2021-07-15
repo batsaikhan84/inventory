@@ -42,6 +42,7 @@ export class SpecialRequestService {
         specialRequestItem.Status = createSpecialRequestDto.Status;
         specialRequestItem.Time_Updated = new Date();
         specialRequestItem.Is_Confirmed = createSpecialRequestDto.Is_Confirmed
+        specialRequestItem.Comment = createSpecialRequestDto.Comment
         specialRequestItem.User = createSpecialRequestDto.User
         await specialRequestItem.save();
         return specialRequestItem

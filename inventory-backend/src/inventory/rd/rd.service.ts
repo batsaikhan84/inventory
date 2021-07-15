@@ -15,7 +15,7 @@ export class RdService {
     ) {}
     @Cron('02 00 7 * * 2')
     // @Cron('48 * * * * *')
-    public async scheduledExtractionItems() {
+    public async scheduledRdItems() {
         const rdItemsRes = await this.rdRepository.find({relations: ['master']});
         if(!rdItemsRes) {
             throw new NotFoundException();

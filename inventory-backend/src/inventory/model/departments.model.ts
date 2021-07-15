@@ -6,4 +6,6 @@ export interface Departments {
     quality: boolean;
     storeRoom: boolean;
     rd: boolean;
+    shipping: boolean;
+    departmentRequest: boolean;
 }

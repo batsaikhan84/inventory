@@ -57,11 +57,20 @@ export class MassSpecService {
     public async createMassSpecItem(createMassSpecDto: CreateMassSpecDto): Promise<MassSpec> {
         return this.massSpecRepository.createMassSpecItem(createMassSpecDto);
     }
-    public async deleteMassSpecItem(id: number): Promise<void> {
-        const result = await this.massSpecRepository.delete(id)
-        if(result.affected === 0) {
-            throw new NotFoundException();
-        }
+    public async deleteItem(item_id: number): Promise<void> {
+        return this.massSpecItems().then(res => {
+          Promise.all(res.map(async item => {
+            if(item.master.ID === item_id) {
+              const result = await this.massSpecRepository.delete(item.ID)
+              console.log('inside map')
+              if(result.affected === 0) {
+                  throw new NotFoundException();
+              }
+            }
+          })).then(() => console.log('success')).catch(() => { throw new NotFoundException() })
+        }).catch(() => {
+          throw new NotFoundException();
+        })
     }
     public async updateMassSpecItem(id: number, createMassSpecDto: CreateMassSpecDto): Promise<MassSpec> {
         const massSpecItem = await this.massSpecItem(id)

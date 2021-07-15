@@ -15,6 +15,7 @@ export class SpecialRequestRepository extends Repository<SpecialRequest> {
         specialRequestItem.Is_Confirmed = createSpecialRequestDto.Is_Confirmed;
         specialRequestItem.Is_Store_Room_Item = createSpecialRequestDto.Is_Store_Room_Item;
         specialRequestItem.Location = createSpecialRequestDto.Location
+        specialRequestItem.Comment = specialRequestItem.Comment
         specialRequestItem.User = User
         await specialRequestItem.save();
         return specialRequestItem;
