@@ -1,0 +1,20 @@
+<mat-grid-list cols="1">
+    <h1>WELCOME TO THE USDTL INVENTORY SYSTEM</h1>
+    <h2>A PROGRAM DESIGNED TO TRACK AND PROCURE INVENTORY</h2>
+    <mat-divider></mat-divider>
+    <div *ngIf="!authService.isLoggedin()">
+        <div>
+            <app-auth></app-auth>
+        </div>
+    </div>
+</mat-grid-list>
+
+
+
+
+
+
+
+
+
+

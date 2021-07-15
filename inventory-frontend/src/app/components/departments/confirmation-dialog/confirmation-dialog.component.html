@@ -1,0 +1,17 @@
+<mat-card>
+    <mat-toolbar>
+        CONFIRMATION
+        <span class="fill-remaining-space"></span>
+        <button mat-flat-button (click)="closeDialog()">
+            <mat-icon class="close-icon">close</mat-icon>
+        </button>
+      </mat-toolbar>
+    <mat-grid-list cols="1" rowHeight="200px">
+        <mat-grid-tile><span class="message">{{data.message}}</span></mat-grid-tile>
+    </mat-grid-list> 
+    <mat-grid-list cols="2" rowHeight="100px">
+        <mat-grid-tile><button mat-flat-button color="primary" id="yes-button" [mat-dialog-close]="true">YES</button></mat-grid-tile>
+        <mat-grid-tile><button mat-flat-button color="warn" id="no-button" [mat-dialog-close]="false">NO</button></mat-grid-tile>
+    </mat-grid-list>     
+</mat-card>
+

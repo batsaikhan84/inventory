@@ -1,0 +1,32 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .fill-remaining-space {
+    flex: 1 1 auto;
+  }
+  .button-row {
+    width: 100%;
+    display: grid;
+    justify-content: end;
+  }
+  .mat-raised-button {
+    margin: 1em;
+  }
+  .signup-form {
+    padding: 2em;
+  }
+  table td {
+    padding: 0 1em;
+  }
+  .button-row {
+    display: block;
+  }
+  .form-checkbox {
+    margin: 0 1em;
+  }

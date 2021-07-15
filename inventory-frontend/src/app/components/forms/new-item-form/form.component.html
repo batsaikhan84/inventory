@@ -1,0 +1,100 @@
+<mat-card>
+  <mat-toolbar color='primary'>
+    <span>ADD ITEM</span>
+    <span class="fill-remaining-space"></span>
+    <button mat-raised-button color="accent" (click)="onClear()">Clear</button>
+    <button mat-raised-button color="warn" (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  </mat-toolbar>
+  <form class="add-form" [formGroup]="masterForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width" >
+      <mat-label>Item</mat-label>
+      <input matInput formControlName="Item" required>
+      <mat-error *ngIf="masterForm.controls['Item'].errors?.required">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Purcahse Unit</mat-label>
+        <input matInput formControlName="Purchase_Unit" required>
+        <mat-error *ngIf="masterForm.controls['Purchase_Unit'].errors?.required">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Manufacturer</mat-label>
+        <input matInput formControlName="Manufacturer" >
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Part Number</mat-label>
+        <input matInput formControlName="Part_Number" required>
+        <mat-error *ngIf="masterForm.controls['Part_Number'].errors?.required">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field></td>
+    </tr></table>
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Recent CN</mat-label>
+        <input matInput formControlName="Recent_CN" required>
+        <mat-error *ngIf="masterForm.controls['Recent_CN'].errors?.required">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Recent Vendor</mat-label>
+        <input matInput formControlName="Recent_Vendor" required>
+        <mat-error *ngIf="masterForm.controls['Recent_Vendor'].errors?.required">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Fisher CN</mat-label>
+        <input matInput formControlName="Fisher_CN" required>
+        <mat-error *ngIf="masterForm.controls['Fisher_CN'].errors?.required">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field></td>
+    </tr></table>
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>VWR CN</mat-label>
+        <input matInput formControlName="VWR_CN" required>
+        <mat-error *ngIf="masterForm.controls['VWR_CN'].errors?.required">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Lab Source CN</mat-label>
+        <input matInput formControlName="Lab_Source_CN" required>
+        <mat-error *ngIf="masterForm.controls['Lab_Source_CN'].errors?.required">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Next Advance CN</mat-label>
+        <input matInput formControlName="Next_Advance_CN" required>
+        <mat-error *ngIf="masterForm.controls['Next_Advance_CN'].errors?.required">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field></td>
+    </tr></table>
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Average Unit Price</mat-label>
+        <input matInput formControlName="Average_Unit_Price">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Category</mat-label>
+        <input matInput formControlName="Category">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="Type">
+      </mat-form-field></td>
+    </tr></table>
+    <mat-form-field class="example-full-width">
+      <mat-label>Comments</mat-label>
+      <textarea rows="6" matInput formControlName="Comments"></textarea>
+    </mat-form-field>
+  </form>
+  <mat-grid-list cols="1" rowHeight="100px">
+    <mat-grid-tile>
+      <form [formGroup]="minorForm" (ngSubmit)="onSubmit()">
+        <mat-label style="font-weight: 600;">ASSIGN ITEM:</mat-label>
+          <mat-checkbox class="form-checkbox" formControlName="extraction">Extraction</mat-checkbox>
+          <mat-checkbox class="form-checkbox" formControlName="massSpec">Mass Spec</mat-checkbox>
+          <mat-checkbox class="form-checkbox" formControlName="receiving">Receiving</mat-checkbox>
+          <mat-checkbox class="form-checkbox" formControlName="screening">Screening</mat-checkbox>
+          <mat-checkbox class="form-checkbox" formControlName="quality">Quality</mat-checkbox>
+          <mat-checkbox class="form-checkbox" formControlName="storeRoom">Store Room</mat-checkbox>
+          <mat-checkbox class="form-checkbox" formControlName="rd">RD</mat-checkbox>
+          <mat-checkbox class="form-checkbox" formControlName="shipping">Shipping</mat-checkbox>
+          <button mat-raised-button color="primary" type="submit" [disabled]="masterForm.invalid">Submit</button>
+      </form>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+

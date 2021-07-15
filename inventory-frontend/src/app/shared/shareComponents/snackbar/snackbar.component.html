@@ -1,0 +1,8 @@
+<mat-grid-list cols="12" rowHeight="40px">
+    <mat-grid-tile colspan=10>
+        <div style="width: 100%; font-weight: 600;">{{ data.message | uppercase}}</div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=2>
+        <button mat-flat-button (click)="snackBarRef.dismiss()">{{ data.type | uppercase}}</button>
+    </mat-grid-tile>
+  </mat-grid-list>

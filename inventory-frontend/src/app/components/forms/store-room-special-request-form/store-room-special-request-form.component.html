@@ -1,0 +1,24 @@
+<mat-card class="request-form-card">
+    <mat-toolbar color='primary'>
+      <span>SPECIAL REQUEST</span>
+      <span class="fill-remaining-space"></span>
+      <button mat-raised-button color="warn" (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+    </mat-toolbar>
+    <mat-grid-list cols="1" rowHeight="150px">
+      <mat-grid-tile>
+        <h1>{{ specialRequestItem.Item }}</h1>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <form class="example-form" [formGroup]="specialRequestForm" (ngSubmit)="onSubmit()">
+          <mat-form-field class="example-full-width">
+            <mat-label>Please enter quantity</mat-label>
+            <input type="text" matInput style="font-size: 3em;" formControlName="Quantity" required>
+            <mat-icon matSuffix style="margin-left: 1em;">mode_edit</mat-icon>
+            <mat-error *ngIf="specialRequestForm.controls['Quantity'].errors?.required">This field is required</mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" [disabled]="specialRequestForm.invalid" style="width: 200px;">Submit</button>
+        </form>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+</mat-card>

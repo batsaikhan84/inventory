@@ -1,0 +1,38 @@
+<mat-toolbar color="accent">
+    <mat-form-field appearance="standard" floatLabel="never" style="width: 20em; margin: 0 2em 0 1em;">
+        <input matInput type="text" name="searchValue" [(ngModel)]="searchValue" placeholder="Search" autocomplete="off" (ngModelChange)="handleSearch($event)">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchValue"  (click) = 'handleClearSearch()'>
+            <mat-icon>close</mat-icon>
+          </button>
+        <mat-icon matSuffix (click) = 'handleClearSearch()' *ngIf="!searchValue" >search</mat-icon>
+    </mat-form-field> 
+    <button mat-raised-button (click)="sizeToFit()">Size to Fit</button>
+    <button mat-raised-button (click)="autoSizeAll(false)">Auto-Size All</button>
+    <span style="margin: 0 1em;">Category:</span> 
+    <mat-select style="width: 150px; border: 1px solid #ffff; padding: 5px;" [(value)]=selectedCategory (selectionChange)="handleCategory($event.value)">
+        <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+    </mat-select>
+    <span class=spacer></span>
+    <span style="font-weight: 900; color: #2f3643;;">{{ authService.getCurrentUser().department | uppercase}} CYCLE COUNT</span>
+</mat-toolbar>
+<ag-grid-angular 
+    #agGrid
+    id='extractionGrid'
+    style="width: 100%;"
+    domLayout='autoHeight'
+    [headerHeight]=55
+    [defaultColDef] = "defaultColDef"
+    class='ag-theme-alpine'
+    [rowData]='rowData'
+    [columnDefs]='columnDefs'
+    [animateRows]="true"
+    [frameworkComponents]="frameworkComponents"
+    (gridReady)="onGridReady($event)"
+    (firstDataRendered)="onFirstDataRendered($event)"
+    [pagination]="true"
+    [paginationPageSize]="paginationSize"
+    (cellValueChanged)="handleUpdate($event)"
+    [context]="context"
+></ag-grid-angular>
+
+

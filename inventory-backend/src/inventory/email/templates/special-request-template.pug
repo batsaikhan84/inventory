@@ -1,0 +1,24 @@
+doctype 5
+html(lang="en")   
+    head 
+    body 
+        - const listStyles = { "color": "#36454F", "text-transform": 'uppercase', "font-weight": "600" }
+        p #{Type}
+        h4 You are receiving this confirmation email for a <strong>#{Type}<strong> special request!
+        h4 Order made by #{User}.
+
+        
+        each item in Items
+            ul
+                li Item  Name: 
+                    span(style=listStyles) #{ item.Item }
+                li Recent Catalog Number: 
+                    span(style=listStyles) #{ item.Recent_CN }
+                li Recent Vendor: 
+                    span(style=listStyles) #{ item.master.Recent_Vendor }
+                li Amount To Be Ordered: 
+                    span(style=listStyles) #{ item.Quantity }
+                li Comments: 
+                    span(style=listStyles) #{ item.Comments }
+            br
+        p Thank You!

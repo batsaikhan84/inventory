@@ -1,0 +1,81 @@
+<mat-toolbar color="accent">
+    <mat-form-field appearance="standard" floatLabel="never" style="width: 20em; margin: 0 2em 0 1em;">
+        <input matInput type="text" name="searchValue" [(ngModel)]="searchValue" placeholder="Search" autocomplete="off">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchValue"  (click) = 'handleClearSearch()'>
+            <mat-icon>close</mat-icon>
+          </button>
+        <mat-icon matSuffix (click) = 'handleClearSearch()' *ngIf="!searchValue" >search</mat-icon>
+    </mat-form-field>
+    <span class="spacer"></span>
+    <div style="font-weight: 900; color: #2f3643;;">CHEMICAL</div>
+</mat-toolbar>
+<mat-card class="chemical-card" *ngFor="let item of chemicalItemsOfMaster | chemicalFilter: searchValue">
+    <mat-toolbar style="background: #add8e6; color: #36454f; font-weight: 600;">
+        <mat-chip style="background: white; font-size: large;">{{ item.ID }}</mat-chip>
+        <span style="margin-left: 10px; color: #36454f;">{{ item.Item }}</span>
+    </mat-toolbar>
+    <div class="container">
+        <div class="item-one">
+            <table >
+                <tr>
+                    <th>LOCATIONS</th>
+                    <th>QUANTITY</th>
+                </tr>
+                <tr *ngFor="let extraction of item.extraction">
+                    <td><span>{{ extraction.Location }}</span></td>
+                    <td><span>{{ extraction.Quantity }}</span></td>
+                </tr>
+                <tr *ngFor="let massSpec of item.massSpec">
+                    <td><span>{{ massSpec.Location }}</span></td>
+                    <td><span>{{ massSpec.Quantity }}</span></td>
+                </tr>
+                <tr *ngFor="let receiving of item.receiving">
+                    <td><span>{{ receiving.Location }}</span></td>
+                    <td><span>{{ receiving.Quantity }}</span></td>
+                </tr>
+                <tr *ngFor="let screening of item.screening">
+                    <td><span>{{ screening.Location }}</span></td>
+                    <td><span>{{ screening.Quantity }}</span></td>
+                </tr>
+                <tr *ngFor="let rd of item.rd">
+                    <td><span>{{ rd.Location }}</span></td>
+                    <td><span>{{ rd.Quantity }}</span></td>
+                </tr>
+                <tr *ngFor="let quality of item.quality">
+                    <td><span>{{ quality.Location }}</span></td>
+                    <td><span>{{ quality.Quantity }}</span></td>
+                </tr>
+                <tr>
+        
+                </tr>
+            </table>
+        </div>
+        <div class="item-two">
+            <table >
+                <th>CA</th>
+                <th>PHYSICAL STATE</th>
+                <th>CONTAINER SIZE</th>
+                <th>SPECIAL NOTES</th>
+                <tr *ngFor="let chemical of item.chemical">
+                    <td><span>{{ chemical.CAS }}</span></td>
+                    <td><span>{{ chemical.Physical_State }}</span></td>
+                    <td><span>{{ chemical.Container_Size }}</span></td>
+                    <td><span>{{ chemical.Special_Notes }}</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <mat-chip-list aria-label="Fish selection" *ngFor="let chemical of item.chemical">
+        <mat-chip style="background: #3f51b5; color: white; font-size: large;">
+            HEALTH HR: <span style="font-weight: 900; margin-left: 10px;">{{ chemical.Health_Hr ? chemical.Health_Hr : 'N/A' }}</span>
+        </mat-chip>
+        <mat-chip style="background: #f44336; color: white; font-size: large;">
+            FIRE HR: <span style="font-weight: 900; margin-left: 10px;"></span>{{ chemical.Fire_Hr ? chemical.Fire_Hr : 'N/A'}}
+        </mat-chip>
+        <mat-chip style="background: #d1d100; color: white; font-size: large;">
+            SPECIAL HR: <span style="font-weight: 900; margin-left: 10px;"></span>{{ chemical.Special_Hr ? chemical.Special_Hr : 'N/A' }}
+        </mat-chip>
+    </mat-chip-list>
+</mat-card>
+  

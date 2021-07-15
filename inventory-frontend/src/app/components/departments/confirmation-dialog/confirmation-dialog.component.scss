@@ -1,0 +1,21 @@
+.fill-remaining-space {
+    flex: 1 1 auto;
+  }
+#yes-button{
+    height: 50px;
+    width: 50%;
+    background-color: #84a3df;
+    color:white;
+    border-radius: 0px;
+}
+#no-button{
+    height: 50px;
+    width: 50%;
+    background-color: #fc7169;
+    color:white;
+    border-radius: 0px;
+}
+.message {
+    font-weight: 600;
+    font-size: large;
+}

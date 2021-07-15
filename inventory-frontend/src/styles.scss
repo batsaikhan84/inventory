@@ -1,0 +1,22 @@
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+body {
+    box-sizing: border-box;
+}
+.error.mat-snack-bar-container {
+    background: #cc0000;
+    color: white
+}
+.success.mat-snack-bar-container {
+    background: #3cb371;
+    color: white;
+}
+
+
+
+

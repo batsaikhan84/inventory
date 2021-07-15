@@ -1,0 +1,9 @@
+server: 
+  port: 3000
+db: 
+  type: 'postgres'
+  port: 3306
+  database: 'inventory'
+
+jwt: 
+  expiresIn: '1d'

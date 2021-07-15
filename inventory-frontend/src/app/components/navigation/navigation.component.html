@@ -1,0 +1,103 @@
+<mat-sidenav-container class="sidenav-container" autosize="true">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport style="background-color: #1347a4;"
+    attr.role="navigation"
+    mode='over'
+    opened=false >
+    <mat-toolbar style="color: #ffffff;" *ngIf="authService.getCurrentUser().role !== 'leader'">{{ authService.getCurrentUser().department | uppercase }} MENU</mat-toolbar>
+    <mat-nav-list *ngIf="authService.isLoggedin() && authService.getCurrentUser().role !== 'leader' ">
+      <div class="store-room-special-request-nav" (click)="drawer.toggle()" *ngIf="authService.isLoggedin() && 
+                                                        authService.getCurrentUser().department !== 'admin' &&
+                                                        authService.getCurrentUser().department !== 'safety' &&
+                                                        authService.getCurrentUser().role !== 'leader' &&
+                                                        authService.getCurrentUser().username !== 'brichey'">
+        <a mat-button style="color: #ffffff;" [routerLink]="['department', authService.getCurrentUser().department]">{{ authService.getCurrentUser().department | uppercase }} CYCLE COUNT</a>
+      </div>
+      <div class="special-request-nav" *ngIf="authService.isLoggedin() && !isAdmin() && authService.getCurrentUser().username === 'dgidron'" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['department', 'receiving']">RECEIVING CYCLE COUNT</a>
+      </div>
+      <div class="special-request-nav" *ngIf="authService.isLoggedin() && !isAdmin() && authService.getCurrentUser().username !== 'brichey'" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['department', 'special-request']">DEPARTMENT SPECIAL REQUEST</a>
+      </div>
+      <div class="chemical-nav" *ngIf="authService.isLoggedin() && !isAdmin() && authService.getCurrentUser().username !== 'brichey'" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['department', 'store-room']">USDTL STORE ROOM INVENTORY</a>
+      </div>
+      <div class="chemical-nav" *ngIf="authService.isLoggedin()" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['chemical']">CHEMICAL</a>
+      </div>
+    </mat-nav-list>
+    <mat-toolbar style="color: #ffffff;" *ngIf="authService.getCurrentUser().role === 'leader'">LEADERSHIP MENU</mat-toolbar>
+    <mat-nav-list *ngIf="authService.isLoggedin() && authService.getCurrentUser().role === 'leader'">
+      <div class="store-room-special-request-nav" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['leader', 'extraction']">EXTRACTION INVENTORY</a>
+      </div>
+      <div class="store-room-special-request-nav" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['leader', 'mass-spec']">MASS SPEC INVENTORY</a>
+      </div>
+      <div class="store-room-special-request-nav" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['leader', 'receiving']">RECEIVING INVENTORY</a>
+      </div>
+      <div class="store-room-special-request-nav" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['leader', 'screening']">SCREENING INVENTORY</a>
+      </div>
+      <div class="store-room-special-request-nav" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['leader', 'quality']">QUALITY INVENTORY</a>
+      </div>
+      <div class="store-room-special-request-nav" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['leader', 'rd']">R AND D INVENTORY</a>
+      </div>
+      <div class="store-room-special-request-nav" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['leader', 'shipping']">SHIPPING INVENTORY</a>
+      </div>
+      <div class="special-request-nav" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['leader', 'general-special-request']">DEPARTMENT SPECIAL REQUEST</a>
+      </div>
+      <div class="chemical-nav" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['leader', 'store-room-special-request']">USDTL STORE ROOM INVENTORY</a>
+      </div>
+      <div class="chemical-nav" (click)="drawer.toggle()">
+        <a mat-button style="color: #ffffff;" [routerLink]="['chemical']">CHEMICAL</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <mat-toolbar color="primary" style="min-height: 2.5em;">
+        <div style="margin-right: 1em;" (click)="drawer.toggle()" *ngIf="!isAdmin() && authService.isLoggedin() && authService.getCurrentUser().username !== 'brichey'">
+          <button mat-icon-button  > 
+            <mat-icon style="color: #ffffff;">menu</mat-icon>
+          </button>
+        </div>
+        <img class="logo" src="assets/images/Logo-USDTL-Only_Large.png" alt="logo">
+        <div *ngIf="authService.isLoggedin() && authService.getCurrentUser().username === 'brichey'">STORE ROOM</div>
+          <div class="store-room-special-request-nav" *ngIf="authService.isLoggedin() && authService.getCurrentUser().department === 'admin'">
+            <a mat-button color="primary" [routerLink]="['admin', 'store-room']" style="background-color: #ffffff; font-weight: 900;">{{ authService.getCurrentUser().department | uppercase }} - USDTL STORE ROOM INVENTORY</a>
+          </div>
+          <div class="admin-nav" *ngIf="isAdmin()">
+            <a mat-button color="basic" [routerLink]="['admin', 'master']">MASTER INVENTORY</a>
+            <a mat-button [matMenuTriggerFor]="afterMenu">INVENTORY BY DEPARTMENT</a>
+            <mat-menu #afterMenu="matMenu" xPosition="before">
+              <button mat-menu-item [routerLink]="['admin', 'extraction']">EXTRACTION</button>
+              <button mat-menu-item [routerLink]="['admin', 'mass-spec']">MASS SPEC</button>
+              <button mat-menu-item [routerLink]="['admin', 'receiving']">RECEIVING</button>
+              <button mat-menu-item [routerLink]="['admin', 'screening']">SCREEINING</button>
+              <button mat-menu-item [routerLink]="['admin', 'rd']">R&D</button> 
+              <button mat-menu-item [routerLink]="['admin', 'quality']">QUALITY</button>
+              <button mat-menu-item [routerLink]="['admin', 'shipping']">SHIPPING</button>
+              <button mat-menu-item [routerLink]="['admin', 'department-request']">DEPARTMENT REQUEST</button>
+            </mat-menu>
+            <a mat-button [matMenuTriggerFor]="srMenu">SPECIAL REQUEST</a>
+            <mat-menu #srMenu="matMenu" xPosition="before">
+              <button mat-menu-item [routerLink]="['admin', 'general-special-request']">GENERAL REQUEST</button>
+              <button mat-menu-item [routerLink]="['admin', 'store-room-special-request']">STORE ROOM REQUEST</button>
+            </mat-menu>
+          </div>
+          <span class="fill-remaining-space"></span>
+          <div class="signup" style="margin-right: 1em;">
+            <button mat-raised-button color="warn" *ngIf="isIt()" (click)="handleSignup()">SIGN UP</button>
+          </div>
+          <div class="signout">
+            <button mat-raised-button *ngIf="authService.isLoggedin()" (click)="handleLogout()">SIGN OUT</button>
+          </div>
+      </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,16 @@
+<form class="signin-form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" style="width: 17em;">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" required>
+        <mat-error *ngIf="signInForm.controls['username'].errors?.required">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 17em; margin: 0">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" required [type]="hide ? 'password' : 'text'">
+        <mat-error *ngIf="signInForm.controls['password'].errors?.required">{{ getErrorMessage() }}</mat-error>
+        <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+    <div>
+        <button mat-raised-button color="primary" style="width: 28em; height: 2em; font-size: large;" type="submit" [disabled]="signInForm.invalid">Submit</button>
+    </div> 
+</form>

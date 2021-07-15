@@ -1,0 +1,23 @@
+.spacer {
+    flex: 1 1 auto;
+}
+.search-form {
+    margin-right: 1em;
+}
+.mat-form-field {
+    margin: 0;
+    padding: 0;
+}
+.search {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+.mat-raised-button {
+    margin: 0 0.5em;
+}
+.table-div {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}

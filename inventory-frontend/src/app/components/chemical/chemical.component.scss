@@ -1,0 +1,52 @@
+.chemical-card {
+    margin: 2em;
+}
+.card {
+    height: 55em;
+    overflow-y: auto;
+}
+mat-card::ng-deep.mat-card-header-text {
+    width: 100%;
+}
+.spacer {
+    flex: 1 1 auto;
+}
+table {
+    padding: 1em;
+    margin-top: 2em;
+    width: 100%;
+}
+    table th {
+    padding: 0.5em 0;
+    font-weight: 600;
+    color: #36454f;
+    font-size: medium;
+    border-bottom: 1px solid #36454f;
+    text-align: left;
+}
+    table td {
+    padding: 0.3em 0;
+    font-weight: 500; 
+    font-size: medium; 
+    color: #36454f;
+}
+    .mat-grid-tile .mat-figure {
+    justify-content: flex-start !important ;
+    align-items: flex-start !important;
+}
+    :host >>> .mat-figure{
+    align-items: start !important;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    width: 100%;
+    margin-bottom: 4em;
+}
+.item-one {
+    grid-column: 1/5;
+}
+.item-two {
+    grid-column: 5/13;
+}

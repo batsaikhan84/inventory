@@ -1,0 +1,48 @@
+.mat-toolbar.mat-primary {
+  position: sticky;
+  height: 4em;
+}
+.mat-toolbar a {
+  margin: 0 1em;
+  font-size: medium;
+  text-decoration: none;
+}
+.mat-icon {
+  color: black;
+}
+.logo {
+  margin-top: 0.3em;
+  height: 3em;
+  margin-right: 3em;
+}
+.mat-icon {
+  font-size: 4em;
+}
+.mat-menu {
+  width: 50em;
+}
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+.example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+.mat-select-panel {
+  background: red;
+}
+.mat-select-arrow {
+  border: none;
+}

@@ -1,0 +1,11 @@
+<div *ngIf="!isForgotPassword">
+    <app-signin-form></app-signin-form >
+</div>
+<div *ngIf="isForgotPassword">
+    <app-reset-password (resetPasswordEvent)="handleEventEmitter($event)"></app-reset-password>
+</div>
+<div style="margin-top: 2em; color: red;">{{ loginErrorMessage }}</div>
+<div>
+    <button mat-button color="primary" style="margin-top: 2em; font-size: medium;" (click)="buttonTextToggle()">{{ buttonText }}</button>
+</div>
+    

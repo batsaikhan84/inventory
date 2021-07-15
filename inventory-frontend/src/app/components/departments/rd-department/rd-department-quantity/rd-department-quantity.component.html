@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <span>UPDATE TOTAL</span>
+    <span class="spacer"></span>
+    <button class="btn-dialog-close" mat-raised-button color="warn" (click)="onClose()" ><mat-icon matSuffix>done</mat-icon>DONE</button>
+</mat-toolbar>
+<ag-grid-angular
+    #agGrid
+    id='masterInventoryGrid'
+    style="width: auto; height: 40em; margin-top: 2em;"
+    [headerHeight]=50
+    class='ag-theme-alpine'
+    [rowData]='rowData'
+    [singleClickEdit]="true"
+    [columnDefs]='columnDefs'
+    (firstDataRendered)="onFirstDataRendered($event)"
+    [animateRows]="true"
+    (gridReady)="onGridReady($event)"
+    (cellValueChanged)="handleUpdate($event)"
+></ag-grid-angular>
