@@ -9,16 +9,16 @@
                                                         authService.getCurrentUser().department !== 'admin' &&
                                                         authService.getCurrentUser().department !== 'safety' &&
                                                         authService.getCurrentUser().role !== 'leader' &&
-                                                        authService.getCurrentUser().username !== 'brichey'">
+                                                        authService.getCurrentUser().username !== 'amaslanka'">
         <a mat-button style="color: #ffffff;" [routerLink]="['department', authService.getCurrentUser().department]">{{ authService.getCurrentUser().department | uppercase }} CYCLE COUNT</a>
       </div>
       <div class="special-request-nav" *ngIf="authService.isLoggedin() && !isAdmin() && authService.getCurrentUser().username === 'dgidron'" (click)="drawer.toggle()">
         <a mat-button style="color: #ffffff;" [routerLink]="['department', 'receiving']">RECEIVING CYCLE COUNT</a>
       </div>
-      <div class="special-request-nav" *ngIf="authService.isLoggedin() && !isAdmin() && authService.getCurrentUser().username !== 'brichey'" (click)="drawer.toggle()">
+      <div class="special-request-nav" *ngIf="authService.isLoggedin() && !isAdmin() && authService.getCurrentUser().username !== 'amaslanka'" (click)="drawer.toggle()">
         <a mat-button style="color: #ffffff;" [routerLink]="['department', 'special-request']">DEPARTMENT SPECIAL REQUEST</a>
       </div>
-      <div class="chemical-nav" *ngIf="authService.isLoggedin() && !isAdmin() && authService.getCurrentUser().username !== 'brichey'" (click)="drawer.toggle()">
+      <div class="chemical-nav" *ngIf="authService.isLoggedin() && !isAdmin() && authService.getCurrentUser().username !== 'amaslanka'" (click)="drawer.toggle()">
         <a mat-button style="color: #ffffff;" [routerLink]="['department', 'store-room']">USDTL STORE ROOM INVENTORY</a>
       </div>
       <div class="chemical-nav" *ngIf="authService.isLoggedin()" (click)="drawer.toggle()">
@@ -61,13 +61,13 @@
   </mat-sidenav>
   <mat-sidenav-content>
       <mat-toolbar color="primary" style="min-height: 2.5em;">
-        <div style="margin-right: 1em;" (click)="drawer.toggle()" *ngIf="!isAdmin() && authService.isLoggedin() && authService.getCurrentUser().username !== 'brichey'">
+        <div style="margin-right: 1em;" (click)="drawer.toggle()" *ngIf="!isAdmin() && authService.isLoggedin() && authService.getCurrentUser().username !== 'amaslanka'">
           <button mat-icon-button  > 
             <mat-icon style="color: #ffffff;">menu</mat-icon>
           </button>
         </div>
         <img class="logo" src="assets/images/Logo-USDTL-Only_Large.png" alt="logo">
-        <div *ngIf="authService.isLoggedin() && authService.getCurrentUser().username === 'brichey'">STORE ROOM</div>
+        <div *ngIf="authService.isLoggedin() && authService.getCurrentUser().username === 'amaslanka'">STORE ROOM</div>
           <div class="store-room-special-request-nav" *ngIf="authService.isLoggedin() && authService.getCurrentUser().department === 'admin'">
             <a mat-button color="primary" [routerLink]="['admin', 'store-room']" style="background-color: #ffffff; font-weight: 900;">{{ authService.getCurrentUser().department | uppercase }} - USDTL STORE ROOM INVENTORY</a>
           </div>
